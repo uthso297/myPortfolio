@@ -1,18 +1,19 @@
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
     const links = <>
 
-        <li><a>Home</a></li>
-        <li><a>About Me</a></li>
-        <li><a>Skills</a></li>
-        <li><a>Education</a></li>
+        <li><Link to="/">Home</Link></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a>Projects</a></li>
     </>
 
     return (
         <div className="bg-[#111723] md:p-4">
-            <div className="navbar shadow-sm border-[0.5px] border-base-100/50 rounded-lg md:p-4 md:mt-5">
+            <div className="navbar shadow-sm border-[0.1px] border-base-300/50 rounded-lg md:p-4 md:mt-5">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost bg-white lg:hidden">

@@ -1,6 +1,6 @@
 const Education = () => {
   return (
-    <section className="bg-[#111723] py-8 px-6 md:px-12 lg:px-24">
+    <section id="education" className="bg-[#111723] py-8 px-6 md:px-12 lg:px-24">
       <div className="container mx-auto">
         <h2 className="text-3xl font-semibold text-center sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4] mb-8">Education Qualification</h2>
         
