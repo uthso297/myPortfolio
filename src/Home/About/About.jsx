@@ -2,7 +2,7 @@
 const About = () => {
     return (
         <div className="bg-[#111723]">
-            <div className="md:max-w-7xl mx-auto p-4 md:pt-10 space-y-4">
+            <div className="md:max-w-7xl mx-auto p-4 md:pt-10 space-y-10">
                 <div>
                     <h1 className="text-center text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4]">About Me</h1>
                 </div>
