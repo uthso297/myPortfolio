@@ -7,6 +7,7 @@ import {
 import './index.css'
 import Main from './Layout/Main';
 import Home from './Home/Home/Home';
+import ProjectDetails from '../src/Components/PtojectDetails'
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/details/:id",
+        element: <ProjectDetails></ProjectDetails>
       }
     ]
   },

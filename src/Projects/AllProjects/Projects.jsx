@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
@@ -14,14 +15,11 @@ const Projects = () => {
                 })
                 .catch((error) => {
                     console.error("Error fetching projects:", error);
-                    setLoading(false); 
+                    setLoading(false);
                 });
-        }, 1000); 
+        }, 1000);
     }, []);
 
-    const handleViewMore = (id) => {
-        console.log("Project ID:", id);
-    };
 
     return (
         <div id="projects" className="bg-[#111723] min-h-screen">
@@ -54,12 +52,13 @@ const Projects = () => {
                                         <p className="text-gray-300 mt-2 text-sm">
                                             {project.project_description}
                                         </p>
-                                        <button
-                                            onClick={() => handleViewMore(project.id)}
-                                            className="mt-4 bg-[#8260b4] text-white px-6 py-2 rounded-full transition-all duration-300 hover:bg-[#f4278d] hover:scale-105 transform"
-                                        >
-                                            View More
-                                        </button>
+                                        <Link to={`/details/${project.id}`}>
+                                            <button
+                                                className="mt-4 bg-[#8260b4] text-white px-6 py-2 rounded-full transition-all duration-300 hover:bg-[#f4278d] hover:scale-105 transform"
+                                            >
+                                                View More
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             ))

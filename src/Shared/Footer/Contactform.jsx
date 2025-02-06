@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { FaFacebook, FaLinkedin, FaMessage, FaWhatsapp } from 'react-icons/fa6';
 import { SiGmail } from 'react-icons/si';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const Contactform = () => {
 
     const form = useRef();
@@ -15,7 +16,6 @@ const Contactform = () => {
         formData.forEach((value, key) => {
             formObject[key] = value;
         });
-        console.log('Form data:', formObject);
 
         emailjs
             .sendForm('service_e8p1neo', 'template_s8krlgc', form.current, {
@@ -23,8 +23,14 @@ const Contactform = () => {
             })
             .then(
                 (result) => {
-                    console.log('SUCCESS!');
-                    console.log(result);
+                    if (result.status === 200) {
+                        Swal.fire({
+                            title: "Thank you!I will reach you soon",
+                            icon: "success",
+                            draggable: true
+                        });
+                        form.current.reset();
+                    }
                 },
                 (error) => {
                     console.log('FAILED...', error.text);
