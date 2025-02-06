@@ -1,5 +1,17 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const About = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.getElementById(location.hash.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, [location]);
     return (
         <div id="about" className="bg-[#111723]">
             <div className="md:max-w-7xl mx-auto p-4 md:pt-10 space-y-10">

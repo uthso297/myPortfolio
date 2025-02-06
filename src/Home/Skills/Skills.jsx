@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaDatabase, FaTools, FaHtml5, FaCss3Alt, FaJs, FaGitAlt } from "react-icons/fa";
 import { SiExpress } from "react-icons/si";
+import { useLocation } from "react-router-dom";
 
 const skills = [
   { name: "React", icon: <FaReact className="text-blue-500 text-5xl" />, level: 90 },
@@ -34,6 +35,17 @@ const Skills = () => {
     hidden: { opacity: 0, scale: 0.5 },
     show: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <div id="skills" className="bg-[#111723] py-10 relative overflow-hidden">

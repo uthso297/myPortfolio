@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
@@ -19,6 +19,17 @@ const Projects = () => {
                 });
         }, 1000);
     }, []);
+
+    const location = useLocation();
+
+    useEffect(() => {
+      if (location.hash) {
+        const element = document.getElementById(location.hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, [location]);
 
 
     return (
@@ -54,7 +65,7 @@ const Projects = () => {
                                         </p>
                                         <Link to={`/details/${project.id}`}>
                                             <button
-                                                className="mt-4 bg-[#8260b4] text-white px-6 py-2 rounded-full transition-all duration-300 hover:bg-[#f4278d] hover:scale-105 transform"
+                                                className="mt-4 bg-[#8260b4] text-white px-6 py-2 rounded-full transition-all duration-300 hover:bg-[#f4278d] hover:scale-105 transform cursor-pointer"
                                             >
                                                 View More
                                             </button>
