@@ -25,7 +25,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a href="/" className="text-xl text-white">Md.Sihab Mahmud Uthso</a>
+                    <a href="/" className="btn bg-inherit border-none shadow-none text-xl text-white">Md.Sihab Mahmud Uthso</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-white">

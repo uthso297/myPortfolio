@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 
 const ProjectDetails = () => {
     const { id } = useParams();
-    const [project, setProject] = useState(null);
+    const [project, setProject] = useState([]);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch('/projects.json')
@@ -11,11 +12,14 @@ const ProjectDetails = () => {
             .then(data => {
                 const foundProject = data.find(item => item.id === parseInt(id, 10));
                 setProject(foundProject);
+                setLoading(false)
             });
     }, [id]);
 
-    if (!project) {
-        return <div className="bg-[#111723] text-white min-h-screen flex justify-center items-center text-2xl">Loading...</div>;
+    if (loading) {
+        <div className="w-full h-64 flex justify-center items-center">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#f4278d] border-solid"></div>
+        </div>
     }
 
     return (

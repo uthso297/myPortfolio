@@ -7,7 +7,7 @@ import {
 import './index.css'
 import Main from './Layout/Main';
 import Home from './Home/Home/Home';
-import ProjectDetails from '../src/Components/PtojectDetails'
+import ProjectDetails from './Components/ProjectDetails';
 
 
 const router = createBrowserRouter([
