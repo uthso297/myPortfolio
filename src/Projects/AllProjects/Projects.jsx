@@ -24,7 +24,7 @@ const Projects = () => {
     };
 
     return (
-        <div className="bg-[#111723] min-h-screen">
+        <div id="projects" className="bg-[#111723] min-h-screen">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-center text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f4278d] to-[#8260b4] sm:h-20">
                     Explore my Projects
