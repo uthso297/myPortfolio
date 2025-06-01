@@ -1,19 +1,39 @@
-import { Link } from "react-router-dom";
-
+// import { Link } from "react-router-dom";
+import { motion } from 'framer-motion'
 const Navbar = () => {
 
     const links = <>
 
-        <li><Link to="/">Home</Link></li>
+        {/* <li><Link to="/">Home</Link></li> */}
         <li><a href="/#about">About Me</a></li>
         <li><a href="/#skills">Skills</a></li>
         <li><a href="/#education">Education</a></li>
         <li><a href="/#projects">Projects</a></li>
     </>
 
+    const navbarVariants = {
+        hidden: { y: -100, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.8,
+                ease: "easeInOut",
+                // delay: 0.5
+            }
+        }
+    }
+
     return (
-        <div className="bg-[#111723] md:p-4">
-            <div className="navbar shadow-sm border-[0.1px] border-base-300/50 rounded-lg md:p-4 md:mt-5">
+        <div
+
+            className="bg-[#111723] md:p-4">
+            {/* <div className="navbar shadow-sm border-[0.1px] border-base-300/50 rounded-lg md:p-4 md:mt-5"> */}
+            <motion.div
+                variants={navbarVariants}
+                initial="hidden"
+                animate="visible"
+                className="navbar shadow-sm rounded-lg md:p-4 md:mt-5">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-primary lg:hidden">
@@ -25,7 +45,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a href="/" className="btn bg-inherit border-none shadow-none text-xl text-white">Md.Sihab Mahmud Uthso</a>
+                    <a href="/" className="btn bg-inherit border-none shadow-none text-xl text-white">Home</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-white">
@@ -34,8 +54,10 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {/* <a className="btn btn-primary">Resume</a> */}
+                    <a href='https://drive.google.com/file/d/1v_O7rN4CVWCgZ-meBMAeKnyuJXJ5xC7R/view?usp=sharing' className='btn btn-primary'>RESUME</a>
+
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

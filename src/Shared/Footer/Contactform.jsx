@@ -41,7 +41,7 @@ const Contactform = () => {
 
 
     return (
-        <div className='bg-gray-900 text-white flex flex-col lg:flex-row sm:items-start sm:justify-center gap-10 py-10 px-5'>
+        <div id='contact' className='bg-gray-900 text-white flex flex-col lg:flex-row sm:items-start sm:justify-center gap-10 py-10 px-5'>
             <div className='space-y-10'>
                 <div className='space-y-5'>
                     <h1 className='text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f4278d] to-[#8260b4]'>DO YOU HAVE A PROJECT TO DISCUSS?</h1>

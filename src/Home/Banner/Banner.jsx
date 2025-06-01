@@ -1,32 +1,104 @@
-import bannerImg from '../../assets/uthsoBanner.jpeg'
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { TypeAnimation } from 'react-type-animation';
+import { motion } from 'framer-motion'
+import { FiArrowDown } from 'react-icons/fi';
 
 const Banner = () => {
-    return (
-        <div className='bg-[#111723] p-4 min-h-screen'>
-            <div className='md:flex gap-10 md:max-w-7xl mx-auto'>
-                <div className='md:w-1/2 flex flex-col justify-center gap-10'>
-                    <h1 className='text-5xl lg:text-7xl'>
-                        <span className='text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4]'>
-                            MERN STACK <br /> DEVELOPER
-                        </span>
-                    </h1>
-                    <div className='space-y-5'>
-                        <p className='text-white lg:text-3xl text-xl'>
-                            I am Uthso - dedicated <span className='text-[#1d6ee6]'>web developer</span> with a passion for crafting visually appealing and responsive websites that deliver seamless user experiences.
-                        </p>
-                        <button className='btn btn-primary'>RESUME</button>
-                    </div>
-                </div>
+    const location = useLocation();
 
-                {/* Image Section */}
-                <div className='md:w-1/2 mt-5 md:mt-0 md:ml-10'>
-                    <img
-                        className="w-full h-auto rounded-lg object-cover"
-                        src={bannerImg}
-                        alt="Banner image showcasing Uthso"
-                    />
-                </div>
-            </div>
+    useEffect(() => {
+        if (location.hash) {
+            location.hash = '';
+        }
+    }, []);
+    // console.log(location);
+    const itemVariants = {
+        hidden: { y: 50, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.8, ease: "easeOut" }
+        }
+    }
+    return (
+        <div className='bg-[#111723] p-4 min-h-screen space-y-4'>
+
+            <motion.h1
+                className='text-white text-3xl md:text-6xl text-center'
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                Hello, I am <span className='text-blue-500'>Md.Sihab Mahmud Uthso</span>
+            </motion.h1>
+
+            <motion.div
+                className='text-center'
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <TypeAnimation
+                    sequence={[
+                        'Frontend Developer',
+                        1000,
+                        'Mern Stack Developer',
+                        1000,
+                        'Software Engineer',
+                        1000,
+                    ]}
+                    wrapper="span"
+                    speed={50}
+                    className='text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4] text-2xl md:text-4xl'
+                    repeat={Infinity}
+                />
+            </motion.div>
+
+            <motion.p
+                className='text-white mt-10 mx-auto opacity-50 md:max-w-[50%] text-center'
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                I create engaging and interactive web experiences with clean code and modern design principles. Let&apos;s transform your ideas into reality.
+            </motion.p>
+
+            <motion.div
+                className='flex items-center justify-center gap-5'
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <a href='/#projects' className='btn btn-primary rounded-2xl'>
+                    View My Work
+                </a>
+                <a href='/#contact' className='btn btn-primary bg-inherit rounded-2xl'>
+                    Contact With Me
+                </a>
+            </motion.div>
+
+            <motion.div
+                className="absolute md:bottom-10 left-1/2 md:transform -translate-x-1/2"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2, duration: 0.8, ease: "easeInOut" }}
+            >
+                <Link
+                    to="/#about"
+                    // spy={true}
+                    // smooth={true}
+                    // offset={-70}
+                    // duration={800}
+                    className="flex flex-col items-center cursor-pointer group"
+                >
+                    <span className="text-gray-400 text-sm mb-2 group-hover:text-primary transition-colors duration-300">
+                        Scroll Down
+                    </span>
+                    <FiArrowDown className="text-primary animate-bounce" size={20} />
+                </Link>
+            </motion.div>
+
         </div>
     );
 };
