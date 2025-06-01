@@ -4,6 +4,7 @@ import Contactform from "../Shared/Footer/Contactform";
 import Footer from "../Shared/Footer/Footer";
 import { useEffect, useState } from "react";
 import Loader from "../Components/Loader/Loader";
+// import CustomCursor from "../Components/CustomCursor/CustomCursor";
 // import Contact from "../Shared/Footer/Contact";
 
 const Main = () => {
@@ -49,6 +50,7 @@ const Main = () => {
 
                     (<>
                         <div>
+                            {/* <CustomCursor></CustomCursor> */}
                             <Navbar></Navbar>
                             <Outlet></Outlet>
                             {/* <Contact></Contact> */}

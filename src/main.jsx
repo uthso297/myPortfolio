@@ -8,12 +8,14 @@ import './index.css'
 import Main from './Layout/Main';
 import Home from './Home/Home/Home';
 import ProjectDetails from './Components/ProjectDetails';
+import NotFound from './Components/ErrorPage/NotFound';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",

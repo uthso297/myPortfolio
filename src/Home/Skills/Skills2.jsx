@@ -1,45 +1,146 @@
-const Skills2 = () => {
-    return (
-        <div className="bg-[#111723] py-10">
-            <div className="space-y-10">
-                <div className="space-y-5">
-                    <p className="text-center text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4]">Frontend</p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-10">
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg object-cover" src="https://miro.medium.com/v2/resize:fit:1200/1*y6C4nSvy2Woe0m7bWEn4BA.png" alt="Image 1" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQGVV8fOc_D2_vxf1_MrxRuPeF3Y1EFAJrxg&s" alt="Image 2" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg object-cover" src="https://ucarecdn.com/188949ff-9fe5-4e13-a682-f9a2cb4614fa/-/crop/1531x667/69,0/-/preview/" alt="Image 3" />
-                    </div>
-                </div>
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import {
+  FaReact, FaNodeJs, FaDatabase, FaTools,
+  FaHtml5, FaCss3Alt, FaJs, FaGitAlt
+} from "react-icons/fa";
+import { SiExpress } from "react-icons/si";
+import { useLocation } from "react-router-dom";
 
-                <div className="space-y-5">
-                    <p className="text-center text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4]">Backend</p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-10">
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fp5rymbqwk2616sdxkcv9.png" alt="" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://media.licdn.com/dms/image/D4E12AQEBg943ptCYpg/article-cover_image-shrink_720_1280/0/1686391647921?e=2147483647&v=beta&t=sTfwUvcIfW7Fuby7hMluDfuRJK3HfYMMWc2SyZR7-GA" alt="" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://community-cdn-digitalocean-com.global.ssl.fastly.net/zBPCfEhW65BKHa1HbLvBk8BX" alt="" />
-                    </div>
-                </div>
-
-                <div className="space-y-5">
-                    <p className="text-center text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4]">Languages</p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-10">
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2021/12/c-programming-language.jpg" alt="" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM9PeWvphnXOtwq5lJ_uyuXs6mugQ0Dhqxxw&s" alt="" />
-                    </div>
-                </div>
-
-                <div className="space-y-5">
-                    <p className="text-center text-2xl sm:text-3xl text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4]">Tools</p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-10">
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://miro.medium.com/v2/resize:fit:480/0*q_2SlZs2OUPK0Ujv.png" alt="" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS62LVhts8-ERiNmlrfHQShVXasUYH38KKSRw&s" alt="" />
-                        <img className="w-32 sm:w-40 h-32 sm:h-40 rounded-lg" src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1-1024x512.png" alt="" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+const categorizedSkills = {
+  frontend: [
+    { name: "HTML", icon: <FaHtml5 className="text-orange-500 text-4xl md:text-5xl" />, level: 95 },
+    { name: "CSS", icon: <FaCss3Alt className="text-blue-400 text-4xl md:text-5xl" />, level: 85 },
+    { name: "JavaScript", icon: <FaJs className="text-yellow-300 text-4xl md:text-5xl" />, level: 90 },
+    { name: "React", icon: <FaReact className="text-blue-500 text-4xl md:text-5xl" />, level: 90 },
+  ],
+  backend: [
+    { name: "Node.js", icon: <FaNodeJs className="text-green-500 text-4xl md:text-5xl" />, level: 80 },
+    { name: "Express.js", icon: <SiExpress className="text-yellow-400 text-4xl md:text-5xl" />, level: 85 },
+    { name: "Databases", icon: <FaDatabase className="text-purple-500 text-4xl md:text-5xl" />, level: 80 },
+  ],
+  tools: [
+    { name: "Git", icon: <FaGitAlt className="text-red-500 text-4xl md:text-5xl" />, level: 70 },
+    { name: "Tools", icon: <FaTools className="text-gray-400 text-4xl md:text-5xl" />, level: 85 },
+  ]
 };
 
-export default Skills2;
+const Skills = () => {
+  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const circleRadius = 28; 
+  const circleCircumference = 2 * Math.PI * circleRadius;
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
+  };
+
+  const location = useLocation();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
+  const renderSkillCategory = (title, skills) => (
+    <div key={title} className="mb-12">
+      <h2 className="text-white text-2xl md:text-3xl font-semibold text-center mb-6 underline underline-offset-4">
+        {title}
+      </h2>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+        className="flex flex-wrap justify-center gap-6 md:gap-10"
+      >
+        {skills.map((skill) => {
+          const defaultOffset = circleCircumference * (1 - skill.level / 100);
+          const hoverOffset = circleCircumference;
+
+          return (
+            <motion.div
+              key={skill.name}
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
+              onMouseEnter={() => setHoveredSkill(skill.name)}
+              onMouseLeave={() => setHoveredSkill(null)}
+              className="relative w-32 h-32 md:w-40 md:h-40 flex items-center justify-center text-white group"
+            >
+              <svg width="100%" height="100%" viewBox="0 0 80 80" className="absolute">
+                <circle cx="40" cy="40" r={circleRadius} strokeWidth="4" stroke="#333" fill="transparent" />
+                <motion.circle
+                  cx="40"
+                  cy="40"
+                  r={circleRadius}
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  fill="transparent"
+                  stroke="url(#gradient)"
+                  strokeDasharray={circleCircumference}
+                  initial={{ strokeDashoffset: defaultOffset }}
+                  animate={{
+                    strokeDashoffset: hoveredSkill === skill.name
+                      ? [hoverOffset, defaultOffset]
+                      : defaultOffset,
+                  }}
+                  transition={{
+                    duration: hoveredSkill === skill.name ? 1.5 : 0,
+                    ease: "easeInOut",
+                  }}
+                />
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style={{ stopColor: "#f4278d", stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: "#8260b4", stopOpacity: 1 }} />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="absolute flex flex-col items-center justify-center"
+              >
+                {skill.icon}
+              </motion.div>
+
+              <span className="text-xs mt-16 md:text-sm">{skill.name}</span>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </div>
+  );
+
+  return (
+    <div id="skills" ref={sectionRef} className="bg-[#111723] py-10 px-4 md:px-0 relative overflow-hidden">
+      <h1 className="text-center text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4] mb-5">
+        SKILLS
+      </h1>
+      <div className="max-w-6xl mx-auto">
+        {renderSkillCategory("Frontend", categorizedSkills.frontend)}
+        {renderSkillCategory("Backend", categorizedSkills.backend)}
+        {renderSkillCategory("Tools & Others", categorizedSkills.tools)}
+      </div>
+    </div>
+  );
+};
+
+export default Skills;
+

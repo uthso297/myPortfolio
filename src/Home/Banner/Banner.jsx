@@ -4,6 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion'
 import { FiArrowDown } from 'react-icons/fi';
 
+
 const Banner = () => {
     const location = useLocation();
 
@@ -86,10 +87,10 @@ const Banner = () => {
             >
                 <Link
                     to="/#about"
-                    // spy={true}
-                    // smooth={true}
-                    // offset={-70}
-                    // duration={800}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={800}
                     className="flex flex-col items-center cursor-pointer group"
                 >
                     <span className="text-gray-400 text-sm mb-2 group-hover:text-primary transition-colors duration-300">
