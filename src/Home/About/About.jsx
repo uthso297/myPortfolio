@@ -75,7 +75,7 @@ const About = () => {
             I began my programming journey with the C language. During my first semester at the university&apos;s Software Engineering Department, I recognized C as the &quot;mother language&quot; of programming. Mastering it would provide a solid foundation, making it easier to transition to other languages.
           </p>
           <p>
-            After gaining proficiency in C and basic knowledge aout Data Structures and Algorithms (DSA), I shifted my focus to web development. Through Programming Hero, I explored the MERN stack, beginning with HTML, CSS, and JavaScript. I then expanded my skills to include React and backend technologies such as Node.js and Express.
+            After gaining proficiency in C and basic knowledge of Data Structures and Algorithms (DSA), I shifted my focus to web development. Through Programming Hero, I explored the MERN stack, beginning with HTML, CSS, and JavaScript. I then expanded my skills to include React and backend technologies such as Node.js and Express.
           </p>
           <p>
             This journey was challenging, with many ups and downs, but I continuously pushed my limits to develop my skills and achieve my goal of becoming a capable developer.
