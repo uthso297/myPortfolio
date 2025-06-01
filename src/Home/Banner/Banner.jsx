@@ -23,7 +23,7 @@ const Banner = () => {
         }
     }
     return (
-        <div className='bg-[#111723] p-4 min-h-screen space-y-4'>
+        <div className='bg-[#111723] p-4 space-y-4'>
 
             <motion.h1
                 className='text-white text-3xl md:text-6xl text-center'
@@ -31,7 +31,9 @@ const Banner = () => {
                 initial="hidden"
                 animate="visible"
             >
-                Hello, I am <span className='text-blue-500'>Md.Sihab Mahmud Uthso</span>
+                Hello, I am 
+                <br />
+                <span className='text-blue-500'>Md.Sihab Mahmud Uthso</span>
             </motion.h1>
 
             <motion.div
@@ -80,17 +82,13 @@ const Banner = () => {
             </motion.div>
 
             <motion.div
-                className="absolute md:bottom-10 left-1/2 md:transform -translate-x-1/2"
+                className="absolute lg:bottom-10 left-1/2 lg:transform -translate-x-1/2"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2, duration: 0.8, ease: "easeInOut" }}
             >
                 <Link
                     to="/#about"
-                    spy={true}
-                    smooth={true}
-                    offset={-70}
-                    duration={800}
                     className="flex flex-col items-center cursor-pointer group"
                 >
                     <span className="text-gray-400 text-sm mb-2 group-hover:text-primary transition-colors duration-300">

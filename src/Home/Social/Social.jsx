@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Social = () => {
     return (
-        <div className="bg-[#111723]">
+        <div className="bg-[#111723] pt-10">
             <div className="md:max-w-7xl mx-auto text-white space-y-10 py-3">
                 <div>
                     <h1 className="text-center text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-[#f4278d] to-[#8260b4]">Social Links</h1>
