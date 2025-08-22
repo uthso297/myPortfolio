@@ -54,7 +54,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {/* <a className="btn btn-primary">Resume</a> */}
-                    <a href='https://drive.google.com/file/d/1v_O7rN4CVWCgZ-meBMAeKnyuJXJ5xC7R/view?usp=sharing' className='btn btn-primary'>RESUME</a>
+                    <a href='https://drive.google.com/file/d/1PJpwKCOdK2avLu93K8mxdJOe1VYwKJx8/view?usp=sharing' className='btn btn-primary'>RESUME</a>
 
                 </div>
             </motion.div>
