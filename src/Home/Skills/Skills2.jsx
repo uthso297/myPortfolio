@@ -1,11 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  FaReact, FaNodeJs, FaDatabase, FaTools,
+  FaReact, FaNodeJs, FaTools,
   FaHtml5, FaCss3Alt, FaJs, FaGitAlt
 } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
+import { SiExpress, SiMongodb } from "react-icons/si";
 import { useLocation } from "react-router-dom";
+import { RiNextjsFill } from "react-icons/ri";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 const categorizedSkills = {
   frontend: [
@@ -13,11 +15,13 @@ const categorizedSkills = {
     { name: "CSS", icon: <FaCss3Alt className="text-blue-400 text-4xl md:text-5xl" />, level: 85 },
     { name: "JavaScript", icon: <FaJs className="text-yellow-300 text-4xl md:text-5xl" />, level: 90 },
     { name: "React", icon: <FaReact className="text-blue-500 text-4xl md:text-5xl" />, level: 90 },
+    { name: "Next JS", icon: <RiNextjsFill className=" text-4xl md:text-5xl" />, level: 60 },
   ],
   backend: [
     { name: "Node.js", icon: <FaNodeJs className="text-green-500 text-4xl md:text-5xl" />, level: 80 },
     { name: "Express.js", icon: <SiExpress className="text-yellow-400 text-4xl md:text-5xl" />, level: 85 },
-    { name: "Databases", icon: <FaDatabase className="text-purple-500 text-4xl md:text-5xl" />, level: 80 },
+    { name: "MongoDB", icon: <SiMongodb  className="text-green-500 text-4xl md:text-5xl" />, level: 80 },
+    { name: "PostgreSql", icon: <BiLogoPostgresql className=" text-4xl md:text-5xl" />, level: 80 },
   ],
   tools: [
     { name: "Git", icon: <FaGitAlt className="text-red-500 text-4xl md:text-5xl" />, level: 70 },

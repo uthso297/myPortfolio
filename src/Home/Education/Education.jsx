@@ -25,7 +25,7 @@ const Education = () => {
               <strong>Institution:</strong> Daffodil International University
             </p>
             <p className="text-white text-base">
-              <strong>Current Semester:</strong> 5th Semester
+              <strong>Current Semester:</strong> 6th Semester
             </p>
             <p className="text-white text-base">
               <strong>CGPA:</strong> 3.80 (Out of 4)
